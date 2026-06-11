@@ -1,0 +1,150 @@
+/* DELINTERNET OFFICIAL THEME OVERRIDES (LIGHT MODE) */
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,600&display=swap');
+
+:root {
+  --del-green: #B9D205;
+  --del-green-hover: #9AB504;
+  --del-light: #ffffff;
+  --del-light-surface: #f7f7f7;
+  --del-gray: #666666;
+  --del-text-dark: #1a1a1a;
+  --glass-bg: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(0, 0, 0, 0.05);
+}
+
+/* Global Typography Upgrade */
+body, p, span, a, li, div {
+  font-family: 'General Sans', sans-serif !important;
+  font-weight: 400;
+  color: var(--del-text-dark);
+}
+
+h1, h2, h3, h4, h5, h6, 
+.elementor-heading-title, 
+.site-title, 
+.ast-archive-title {
+  font-family: 'General Sans', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.02em;
+  color: var(--del-text-dark) !important;
+}
+
+/* Background Color Override to Official Light Mode */
+body, .ast-separate-container, .site-content, .ast-plain-container,
+.elementor-section, .ast-article-post, .ast-article-single {
+  background-color: var(--del-light) !important;
+  background-image: none !important;
+}
+
+/* Fix Navbar Cutting Off Titles */
+.site-content {
+  padding-top: 120px !important; 
+}
+
+/* Solid/Glassmorphism Header */
+#masthead, .ast-theme-transparent-header .main-header-bar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  transition: all 0.3s ease;
+}
+
+/* Header Links */
+.main-header-menu .menu-link {
+  color: var(--del-text-dark) !important;
+  font-family: 'General Sans', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.main-header-menu .menu-link:hover,
+.main-header-menu .current-menu-item > .menu-link {
+  color: var(--del-green-hover) !important;
+}
+
+/* Button Upgrades (Official Style) */
+.elementor-button, .wp-block-button__link, .ast-button, button, input[type="submit"] {
+  background: var(--del-green) !important;
+  color: #000000 !important;
+  font-family: 'General Sans', sans-serif !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  border: none !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease !important;
+  box-shadow: none !important;
+}
+
+.elementor-button:hover, .wp-block-button__link:hover, .ast-button:hover, button:hover, input[type="submit"]:hover {
+  background: var(--del-green-hover) !important;
+  transform: translateY(-2px);
+  color: #000000 !important;
+}
+
+/* Hero Section / Overlay Enhancement */
+.elementor-background-overlay {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  background-image: none !important;
+  opacity: 1 !important;
+}
+
+/* Cards & Columns Styling for Clean Look */
+.elementor-column-wrap, .elementor-widget-wrap {
+  border-radius: 12px;
+}
+
+.elementor-widget-icon-box {
+  background: var(--del-light-surface);
+  padding: 30px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.elementor-widget-icon-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  border-color: rgba(185,210,5,0.3);
+}
+
+.elementor-icon-box-title {
+  color: var(--del-text-dark) !important;
+}
+
+.elementor-icon-box-description {
+  color: var(--del-gray) !important;
+}
+
+/* Remove Ugly Shape Dividers */
+.elementor-shape-fill {
+  fill: var(--del-light) !important;
+}
+
+/* Footer Styling */
+.site-below-footer-wrap {
+  background: var(--del-light-surface) !important;
+  border-top: 1px solid var(--glass-border) !important;
+}
+
+.ast-footer-copyright {
+  color: var(--del-gray) !important;
+}
+
+/* Forms (Contact Page) */
+.wpforms-container input, .wpforms-container textarea {
+  background: var(--del-light) !important;
+  border: 1px solid #ddd !important;
+  color: var(--del-text-dark) !important;
+  border-radius: 8px !important;
+  padding: 15px !important;
+}
+
+.wpforms-container input:focus, .wpforms-container textarea:focus {
+  border-color: var(--del-green) !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(185,210,5,0.3) !important;
+}

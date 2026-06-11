@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fibra i WiMax — Delinternet</title>
+<meta name="description" content="Internet d'alta velocitat per fibra i WiMax. Fibra fins a 200 MB des de 29,95€/mes. WiMax fins a 50 MB des de 24,90€/mes.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.pricing-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  border: 2px solid var(--light-gray);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.pricing-card.featured { border-color: var(--green); box-shadow: 0 0 0 4px rgba(185,210,5,0.1); }
+.pricing-card:hover { box-shadow: 0 16px 48px rgba(185,210,5,0.15); transform: translateY(-4px); }
+
+.pricing-badge {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: var(--green); color: var(--dark);
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem; border-radius: 100px;
+}
+
+.pricing-icon {
+  width: 60px; height: 60px;
+  background: rgba(185,210,5,0.1); border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.pricing-icon svg {
+  width: 30px; height: 30px; stroke: var(--green-dark);
+  fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.pricing-card h3 { font-size: 1.4rem; font-weight: 600; color: var(--dark); }
+
+.pricing-price { display: flex; align-items: baseline; gap: 0.35rem; }
+.price-amount { font-size: 2.8rem; font-weight: 600; color: var(--dark); line-height: 1; }
+.price-suffix { font-size: 0.9rem; color: var(--text-muted); }
+
+.pricing-divider { height: 1px; background: var(--light-gray); }
+
+.pricing-features {
+  list-style: none; display: flex; flex-direction: column; gap: 0.65rem; flex: 1;
+}
+
+.pricing-features li {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  font-size: 0.95rem; color: var(--dark); line-height: 1.45;
+}
+
+.pricing-features li::before {
+  content: ''; flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px;
+  background: var(--green); border-radius: 50%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='8' viewBox='0 0 10 8'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%2338424b' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center;
+}
+
+.pricing-features .note { color: var(--text-muted); font-size: 0.875rem; }
+
+.comparison {
+  background: var(--white); border-radius: var(--radius-xl);
+  border: 1.5px solid var(--light-gray); overflow: hidden; margin-top: 3rem;
+}
+
+.cmp-head {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  background: var(--cream); border-bottom: 1.5px solid var(--light-gray);
+}
+
+.cmp-head div, .cmp-row div {
+  padding: 1rem 1.5rem;
+}
+
+.cmp-head div {
+  font-size: 0.875rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--text-muted);
+}
+
+.cmp-head div:not(:last-child), .cmp-row div:not(:last-child) {
+  border-right: 1px solid var(--light-gray);
+}
+
+.cmp-row { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 1px solid var(--light-gray); }
+.cmp-row:last-child { border-bottom: none; }
+.cmp-row div { font-size: 0.95rem; color: var(--dark); display: flex; align-items: center; }
+.cmp-row div:first-child { font-weight: 600; color: var(--text-muted); font-size: 0.875rem; }
+
+.tag { background: rgba(185,210,5,0.15); color: var(--green-dark); font-weight: 600;
+  font-size: 0.8rem; padding: 0.2rem 0.6rem; border-radius: 100px; }
+
+.info-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem; margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+  .pricing-grid, .info-grid { grid-template-columns: 1fr; }
+  .comparison { display: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <a class="navbar-logo" href="../index.html">
+    <img src="../assets/img/logo-b.png" alt="Delinternet">
+  </a>
+  <nav aria-label="Navegació principal">
+    <ul class="navbar-links" id="nav-links">
+      <li><a href="../index.html">Inici</a></li>
+      <li><a href="../fibra-2/index.html" class="active">Fibra i WiMax</a></li>
+      <li><a href="../ion-mobile-2/index.html">Ion Mobile</a></li>
+      <li><a href="../contacte/index.html" class="btn-nav">Contacte</a></li>
+    </ul>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Obrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="page-header" style="position:relative; overflow:hidden;">
+  <svg class="deco-wifi" style="top:-60px; right:-80px; width:360px; opacity:0.45;" viewBox="0 0 360 360" fill="none" aria-hidden="true">
+    <g stroke="#b9d205" stroke-linecap="round" fill="none">
+      <path stroke-width="30" d="M180 300 C80 300 10 230 10 130 C10 30 80 -40 180 -40"/>
+      <path stroke-width="26" d="M180 255 C110 255 60 205 60 135 C60 65 110 15 180 15"/>
+      <path stroke-width="22" d="M180 210 C138 210 106 178 106 136 C106 94 138 62 180 62"/>
+    </g>
+    <circle cx="180" cy="136" r="16" fill="#b9d205"/>
+  </svg>
+  <div class="page-header-inner">
+    <p class="section-label">Connexió a internet</p>
+    <h1>Fibra i Radioenllaç</h1>
+    <p style="margin-top:1rem;">
+      Fibra òptica on hi ha cobertura, radioenllaç on no hi arriba ningú més.
+      Sense permanència. Instal·lació en 2-3 dies.
+    </p>
+  </div>
+</div>
+
+<section class="section" style="padding-top:2rem;">
+  <div class="section-inner">
+    <p class="section-label">Plans i preus</p>
+    <h2 class="section-title">Tarifes clares, sense sorpreses</h2>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card featured">
+        <span class="pricing-badge">Més popular</span>
+        <div class="pricing-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M1.5 8.5C5 5 9.5 3 12 3s7 2 10.5 5.5"/>
+            <path d="M5 12c1.9-1.9 4.3-3 7-3s5.1 1.1 7 3"/>
+            <path d="M8.5 15.5C9.7 14.3 10.8 14 12 14s2.3.3 3.5 1.5"/>
+            <circle cx="12" cy="19" r="1.5" fill="#9ab504" stroke="none"/>
+          </svg>
+        </div>
+        <h3>Fibra Òptica</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted);">Connexió simètrica de fins a 200 Mb per a la llar o empresa. Router WiFi inclòs.</p>
+        <div class="pricing-price">
+          <span class="price-amount">29,95€</span>
+          <span class="price-suffix">+ IVA / mes</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Fins a <strong>200 MB simètrics</strong></li>
+          <li>Alta i <strong>router gratuïts</strong></li>
+          <li>Manteniment <strong>inclòs</strong></li>
+          <li>Sense permanència</li>
+          <li class="note">Disponible a zones amb cobertura de fibra</li>
+        </ul>
+        <a href="../contacte/index.html" class="btn btn-primary">Contractar ara</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="pricing-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3>Radioenllaç (WiMax)</h3>
+        <p style="font-size:0.95rem; color:var(--text-muted);">Per a zones rurals sense cobertura de fibra. Fins a 50 Mb amb antena instal·lada.</p>
+        <div class="pricing-price">
+          <span class="price-amount">24,90€</span>
+          <span class="price-suffix">+ IVA / mes</span>
+        </div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Fins a <strong>50 MB simètrics</strong></li>
+          <li>Manteniment <strong>inclòs</strong></li>
+          <li>Sense permanència</li>
+          <li class="note">Alta + antena i router: <strong>210 € + IVA</strong></li>
+          <li class="note">Instal·lació professional inclosa</li>
+        </ul>
+        <a href="../contacte/index.html" class="btn btn-outline">Contractar ara</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <h3 class="section-title" style="font-size:1.5rem;">Comparativa de plans</h3>
+    <div class="comparison">
+      <div class="cmp-head">
+        <div>Característica</div>
+        <div>Fibra Òptica</div>
+        <div>WiMax Rural</div>
+      </div>
+      <div class="cmp-row">
+        <div>Velocitat màxima</div>
+        <div><span class="tag">200 Mb simètrics</span></div>
+        <div><span class="tag">50 Mb simètrics</span></div>
+      </div>
+      <div class="cmp-row">
+        <div>Preu mensual</div>
+        <div>29,95 € + IVA</div>
+        <div>24,90 € + IVA</div>
+      </div>
+      <div class="cmp-row">
+        <div>Alta i router</div>
+        <div>Gratuïts</div>
+        <div>210 € + IVA</div>
+      </div>
+      <div class="cmp-row">
+        <div>Manteniment</div>
+        <div>Inclòs</div>
+        <div>Inclòs</div>
+      </div>
+      <div class="cmp-row">
+        <div>Permanència</div>
+        <div>Sense</div>
+        <div>Sense</div>
+      </div>
+      <div class="cmp-row">
+        <div>Cobertura</div>
+        <div>Zones urbanes</div>
+        <div>Zones rurals</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="section-inner">
+    <p class="section-label">Per què Delinternet</p>
+    <h2 class="section-title">Prop de tu, sense sorpreses</h2>
+    <div class="info-grid">
+      <div class="card">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" stroke="var(--green-dark)" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h4 style="font-size:1rem; font-weight:600; margin-bottom:0.4rem;">Sense permanència</h4>
+        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">Pots canviar o cancel·lar quan vulguis. Sense penalitzacions.</p>
+      </div>
+      <div class="card">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" stroke="var(--green-dark)" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+          </svg>
+        </div>
+        <h4 style="font-size:1rem; font-weight:600; margin-bottom:0.4rem;">Instal·lació en 2-3 dies</h4>
+        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">Des que contractes fins que tens internet a casa, en menys d'una setmana.</p>
+      </div>
+      <div class="card">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" stroke="var(--green-dark)" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81 19.79 19.79 0 01.06 1.21 2 2 0 012.06 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <h4 style="font-size:1rem; font-weight:600; margin-bottom:0.4rem;">Atenció local</h4>
+        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">Truca'ns, vine a l'oficina o escriu-nos. No parles amb un robot.</p>
+      </div>
+      <div class="card">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" stroke="var(--green-dark)" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+          </svg>
+        </div>
+        <h4 style="font-size:1rem; font-weight:600; margin-bottom:0.4rem;">Preus justos</h4>
+        <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">Pagues el que contractes. Res més a la factura.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0; padding-bottom:5rem;">
+  <div class="section-inner">
+    <div style="background:var(--dark); border-radius:var(--radius-xl); padding:clamp(2.5rem,4vw,4rem); text-align:center; position:relative; overflow:hidden;">
+      <div style="position:absolute;right:-60px;top:-60px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle, rgba(185,210,5,0.1) 0%, transparent 70%);pointer-events:none;"></div>
+      <p class="section-label">Commença ara</p>
+      <h2 style="font-size:clamp(1.6rem,3vw,2.3rem); font-weight:600; color:var(--white); margin-bottom:0.75rem;">
+        Comprova la cobertura al teu domicili
+      </h2>
+      <p style="color:rgba(255,255,255,0.65); margin-bottom:2rem; font-size:1.05rem;">
+        Truca'ns al <strong style="color:var(--green);">659 896 552</strong> i t'ho diem en un minut.
+      </p>
+      <a href="../contacte/index.html" class="btn btn-primary">Contacta'ns ara</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <img src="../assets/img/logo-b.png" alt="Delinternet">
+    <p class="footer-copy">© 2026 Delinternet. Tots els drets reservats.</p>
+    <ul class="footer-nav">
+      <li><a href="../fibra-2/index.html">Fibra i WiMax</a></li>
+      <li><a href="../ion-mobile-2/index.html">Ion Mobile</a></li>
+      <li><a href="../contacte/index.html">Contacte</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('nav-links');
+  ham.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    ham.setAttribute('aria-expanded', open);
+  });
+</script>
+</body>
+</html>

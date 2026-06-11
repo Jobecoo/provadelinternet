@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ion Mobile — Delinternet</title>
+<meta name="description" content="Ion Mobile a El Perelló: distribuïdor oficial amb cobertura Movistar 4G i sense permanència.">
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+/* ---- PAGE OVERRIDES ---- */
+body { background: #ffffff; color: #1a1a1a; }
+.navbar { background: rgba(255,255,255,0.95); border-bottom-color: rgba(0,0,0,0.08); }
+.navbar-links a { color: #1a1a1a; }
+.navbar-links a:hover { background: rgba(141,198,63,0.12); }
+.navbar-links a.active { color: #6ea832; }
+.navbar-links .btn-nav { background: #8DC63F; color: #1a1a1a !important; }
+.navbar-links .btn-nav:hover { background: #1a1a1a; color: #fff !important; }
+.hamburger span { background: #1a1a1a; }
+
+/* ---- BUTTONS ---- */
+.btn-lm {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.9rem;
+  background: #8DC63F;
+  color: #1a1a1a;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  border: 2px solid #8DC63F;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.btn-lm:hover {
+  background: #7ab335;
+  border-color: #7ab335;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(141,198,63,0.3);
+}
+
+.btn-lm-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.9rem;
+  background: transparent;
+  color: #1a1a1a;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 50px;
+  text-decoration: none;
+  border: 2px solid #8DC63F;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-lm-outline:hover {
+  background: #8DC63F;
+  transform: translateY(-2px);
+}
+
+/* ---- HERO ---- */
+.im-hero {
+  padding: 8rem clamp(1.25rem, 4vw, 2.5rem) 5rem;
+  background: #ffffff;
+  text-align: center;
+}
+.im-hero-inner { max-width: 660px; margin: 0 auto; }
+
+.im-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8DC63F;
+  margin-bottom: 1.1rem;
+}
+
+.im-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.12;
+  margin-bottom: 0.9rem;
+}
+
+.im-hero .hero-sub {
+  font-size: 1.05rem;
+  color: #666666;
+  line-height: 1.75;
+  margin-bottom: 2.25rem;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.25rem;
+}
+.hero-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #444;
+  background: #f5f5f5;
+  border: 1px solid #e0e0e0;
+  border-radius: 50px;
+  padding: 0.3rem 0.85rem;
+}
+
+/* ---- PRICING ---- */
+.pricing-section {
+  padding: 5rem clamp(1.25rem, 4vw, 2.5rem);
+  background: #f5f5f5;
+}
+.pricing-inner { max-width: 1100px; margin: 0 auto; }
+
+.section-heading {
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+.section-sub {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.65;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  align-items: start;
+}
+
+.plan-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 2rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: box-shadow 0.22s, transform 0.22s;
+}
+.plan-card:hover {
+  box-shadow: 0 12px 36px rgba(0,0,0,0.09);
+  transform: translateY(-3px);
+}
+
+.plan-card.featured {
+  background: #3a3a3a;
+  border-color: #3a3a3a;
+  color: #ffffff;
+}
+.featured-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #8DC63F;
+  color: #1a1a1a;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.85rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.plan-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.2rem;
+}
+.plan-card.featured .plan-name { color: #ffffff; }
+
+.plan-data {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #8DC63F;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.plan-price {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #8DC63F;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+.plan-price sup {
+  font-size: 1.1rem;
+  vertical-align: super;
+  font-weight: 700;
+}
+.plan-price sub {
+  font-size: 0.95rem;
+  vertical-align: baseline;
+  font-weight: 500;
+}
+
+.plan-period {
+  font-size: 0.78rem;
+  color: #999;
+  margin-bottom: 1.75rem;
+}
+.plan-card.featured .plan-period { color: rgba(255,255,255,0.45); }
+
+.plan-divider {
+  height: 1px;
+  background: #efefef;
+  margin-bottom: 1.5rem;
+}
+.plan-card.featured .plan-divider { background: rgba(255,255,255,0.12); }
+
+.plan-features {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  flex: 1;
+  margin-bottom: 1.75rem;
+}
+.plan-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.875rem;
+  color: #444;
+  line-height: 1.4;
+}
+.plan-card.featured .plan-features li { color: rgba(255,255,255,0.82); }
+.plan-features li::before {
+  content: '✓';
+  color: #8DC63F;
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ---- WHY DELINTERNET ---- */
+.why-section {
+  padding: 5rem clamp(1.25rem, 4vw, 2.5rem);
+  background: #ffffff;
+}
+.why-inner { max-width: 1100px; margin: 0 auto; }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+.why-block {
+  background: #f5f5f5;
+  border-radius: 12px;
+  padding: 1.75rem;
+}
+.why-icon {
+  width: 44px; height: 44px;
+  background: rgba(141,198,63,0.14);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1rem;
+}
+.why-icon svg { width: 22px; height: 22px; stroke: #6ea832; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.why-block h3 { font-size: 1rem; font-weight: 700; color: #1a1a1a; margin-bottom: 0.4rem; }
+.why-block p { font-size: 0.875rem; color: #666; line-height: 1.65; }
+
+/* ---- CTA ---- */
+.im-cta {
+  padding: 5rem clamp(1.25rem, 4vw, 2.5rem) 5rem;
+  background: #3a3a3a;
+  text-align: center;
+}
+.im-cta-inner { max-width: 560px; margin: 0 auto; }
+.im-cta .cta-label {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8DC63F;
+  margin-bottom: 1rem;
+}
+.im-cta h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; }
+.im-cta .phone-num { font-size: 2.2rem; font-weight: 800; color: #8DC63F; margin-bottom: 0.4rem; line-height: 1; }
+.im-cta .cta-desc { font-size: 0.95rem; color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
+
+/* ---- FOOTER OVERRIDE ---- */
+.footer { background: #f5f5f5; border-top-color: #e0e0e0; }
+.footer-copy { color: #888; }
+.footer-nav a { color: #888; }
+.footer-nav a:hover { color: #1a1a1a; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .pricing-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .pricing-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <a class="navbar-logo" href="../index.html">
+    <img src="../assets/img/logo-b.png" alt="Delinternet">
+  </a>
+  <nav aria-label="Navegació principal">
+    <ul class="navbar-links" id="nav-links">
+      <li><a href="../index.html">Inici</a></li>
+      <li><a href="../fibra-2/index.html">Fibra i WiMax</a></li>
+      <li><a href="../ion-mobile-2/index.html" class="active">Ion Mobile</a></li>
+      <li><a href="../contacte/index.html" class="btn-nav">Contacte</a></li>
+    </ul>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Obrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="im-hero">
+  <div class="im-hero-inner">
+    <p class="im-label">Telefonia mòbil</p>
+    <h1>Ion Mobile<br>a El Perelló</h1>
+    <p class="hero-sub">
+      Distribuïdor oficial · Cobertura Movistar 4G · Sense permanència
+    </p>
+    <div class="hero-badges">
+      <span class="hero-badge">Trucades il·limitades</span>
+      <span class="hero-badge">GB Acumulables</span>
+      <span class="hero-badge">5G disponible</span>
+      <span class="hero-badge">Roaming UE</span>
+    </div>
+    <a href="#tarifes" class="btn-lm">Consulta els plans</a>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="tarifes">
+  <div class="pricing-inner">
+    <p class="im-label">Tarifes</p>
+    <h2 class="section-heading">Plans sense permanència</h2>
+    <p class="section-sub">Tots els plans inclouen trucades il·limitades i GB acumulables d'un mes a l'altre.</p>
+
+    <div class="pricing-grid">
+
+      <!-- Card 1 — FEATURED -->
+      <div class="plan-card featured">
+        <span class="featured-badge">Més popular</span>
+        <div class="plan-name">Promo</div>
+        <div class="plan-data">100 GB</div>
+        <div class="plan-price"><sup>€</sup>5<sub>/mes</sub></div>
+        <div class="plan-period">IVA inclòs · Sense permanència</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>100 GB de dades</li>
+          <li>Trucades il·limitades</li>
+          <li>GB Acumulables</li>
+          <li>GB Transferibles</li>
+        </ul>
+        <a href="../contacte/index.html" class="btn-lm" style="justify-content:center;">Contractar</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="plan-card">
+        <div class="plan-name">Eco</div>
+        <div class="plan-data">40 GB</div>
+        <div class="plan-price"><sup>€</sup>7<sub>,95/mes</sub></div>
+        <div class="plan-period">IVA inclòs · Sense permanència</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>40 GB de dades</li>
+          <li>Trucades il·limitades</li>
+          <li>GB Acumulables</li>
+          <li>5G inclòs</li>
+        </ul>
+        <a href="../contacte/index.html" class="btn-lm-outline" style="justify-content:center;">Més info</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="plan-card">
+        <div class="plan-name">Pro</div>
+        <div class="plan-data">250 GB</div>
+        <div class="plan-price"><sup>€</sup>12<sub>,95/mes</sub></div>
+        <div class="plan-period">IVA inclòs · Sense permanència</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>250 GB de dades</li>
+          <li>Trucades il·limitades</li>
+          <li>GB Acumulables</li>
+          <li>5G inclòs</li>
+        </ul>
+        <a href="../contacte/index.html" class="btn-lm-outline" style="justify-content:center;">Més info</a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="plan-card">
+        <div class="plan-name">Tarifa Infinita</div>
+        <div class="plan-data">GB Il·limitats</div>
+        <div class="plan-price"><sup>€</sup>15<sub>,95/mes</sub></div>
+        <div class="plan-period">IVA inclòs · Sense permanència</div>
+        <div class="plan-divider"></div>
+        <ul class="plan-features">
+          <li>GB il·limitats</li>
+          <li>Trucades il·limitades</li>
+          <li>5G inclòs</li>
+          <li>Roaming Unió Europea</li>
+        </ul>
+        <a href="../contacte/index.html" class="btn-lm-outline" style="justify-content:center;">Més info</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY DELINTERNET -->
+<section class="why-section">
+  <div class="why-inner">
+    <p class="im-label">Per què amb Delinternet</p>
+    <h2 class="section-heading">Gestió local, atenció real</h2>
+    <p class="section-sub">Contractes Ion Mobile però parles amb l'equip de El Perelló. Res de centres d'atenció massius.</p>
+
+    <div class="why-grid">
+
+      <div class="why-block">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81 19.79 19.79 0 01.06 1.21 2 2 0 012.06 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+        </div>
+        <h3>Atenció local</h3>
+        <p>Truca o vine a l'oficina de El Perelló. Parles directament amb l'equip, sense esperes ni centraletes.</p>
+      </div>
+
+      <div class="why-block">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="7" y="2" width="10" height="20" rx="2"/>
+            <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/>
+          </svg>
+        </div>
+        <h3>App de gestió</h3>
+        <p>Controla el consum, les dades i la factura des de l'app d'Ion Mobile. Disponible per iOS i Android.</p>
+      </div>
+
+      <div class="why-block">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3>Sense permanència</h3>
+        <p>Canvia de pla o cancel·la quan vulguis. Sense penalitzacions ni compromisos de mesos.</p>
+      </div>
+
+      <div class="why-block">
+        <div class="why-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M1.5 8.5C5 5 9.5 3 12 3s7 2 10.5 5.5"/>
+            <path d="M5 12c1.9-1.9 4.3-3 7-3s5.1 1.1 7 3"/>
+            <path d="M8.5 15.5C9.7 14.3 10.8 14 12 14s2.3.3 3.5 1.5"/>
+            <circle cx="12" cy="19" r="1.5" fill="#6ea832" stroke="none"/>
+          </svg>
+        </div>
+        <h3>Cobertura Movistar 4G</h3>
+        <p>Xarxa Movistar amb 95% de cobertura al territori. Inclou roaming a la Unió Europea.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="im-cta">
+  <div class="im-cta-inner">
+    <p class="cta-label">Contacta'ns</p>
+    <h2>Vols contractar Ion Mobile?</h2>
+    <div class="phone-num">659 896 552</div>
+    <p class="cta-desc">O vine directament a l'oficina de Carrer Salmerón 44, El Perelló.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="tel:+34659896552" class="btn-lm">Trucar ara</a>
+      <a href="../contacte/index.html" class="btn-lm-outline" style="color:#fff; border-color:rgba(255,255,255,0.35);">Veure contacte</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <img src="../assets/img/logo-b.png" alt="Delinternet">
+    <p class="footer-copy">© 2026 Delinternet. Tots els drets reservats.</p>
+    <ul class="footer-nav">
+      <li><a href="../fibra-2/index.html">Fibra i WiMax</a></li>
+      <li><a href="../ion-mobile-2/index.html">Ion Mobile</a></li>
+      <li><a href="../contacte/index.html">Contacte</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const ham = document.getElementById('hamburger');
+  const nav = document.getElementById('nav-links');
+  ham.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    ham.setAttribute('aria-expanded', open);
+  });
+</script>
+</body>
+</html>
