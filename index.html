@@ -102,23 +102,10 @@
     <a href="https://delinternet.com" target="_blank" rel="noopener" class="btn">VES A DELINTERNET &rarr;</a>
   </div>
   <script>
-    // Redirecció automàtica als 35 segons d'inactivitat
-    let idleTimeout;
-
-    function resetIdleTimer() {
-      clearTimeout(idleTimeout);
-      idleTimeout = setTimeout(() => {
-        window.location.href = "https://delinternet.com";
-      }, 35000); // 35 segons
-    }
-
-    // Inicialitzar timer
-    resetIdleTimer();
-
-    // Reiniciar el timer si l'usuari interactua
-    ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'].forEach(evt => {
-      document.addEventListener(evt, resetIdleTimer, { passive: true });
-    });
+    // Redirecció automàtica passats 35 segons exactes
+    setTimeout(() => {
+      window.location.href = "https://delinternet.com";
+    }, 35000);
   </script>
 </body>
 </html>
