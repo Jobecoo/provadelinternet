@@ -101,5 +101,24 @@
     <p>El servei que coneixes ara amb una marca nova. Mateixa qualitat, mateixa atenció local, nous horitzons.</p>
     <a href="https://delinternet.com" target="_blank" rel="noopener" class="btn">VES A DELINTERNET &rarr;</a>
   </div>
+  <script>
+    // Redirecció automàtica als 35 segons d'inactivitat
+    let idleTimeout;
+
+    function resetIdleTimer() {
+      clearTimeout(idleTimeout);
+      idleTimeout = setTimeout(() => {
+        window.location.href = "https://delinternet.com";
+      }, 35000); // 35 segons
+    }
+
+    // Inicialitzar timer
+    resetIdleTimer();
+
+    // Reiniciar el timer si l'usuari interactua
+    ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'].forEach(evt => {
+      document.addEventListener(evt, resetIdleTimer, { passive: true });
+    });
+  </script>
 </body>
 </html>
